@@ -171,3 +171,185 @@ project Structure
     abstracts/
     vendors/
 
+---------------------------------------------------------
+                        Introduction To SASS
+                                    25/11/2023
+
+Sass is css preprocessor, an extension of css that adds power and elegance to the basic language
+
+sass code ---------------> compiled css code
+
+Features
+    1) Variables
+    2) Nesting
+    3) Operators
+    4) Partials and imports
+    5) Mixins : Write reusable piece of css code
+    6) Functions : Similar to mixins, differenct it can produce Variables
+    7) Extends 
+    8)control directives
+    We are going to use scss extention
+1)Sass variables and nesting
+
+
+    
+    <nav>
+      <ul class="navigation">
+        <li><a href="#">About us</a></li>
+        <li><a href="#">pricing</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="button">
+        <a class="btn-main" href="#">Sign up</a>
+        <a class="btn-hot" href="#">Get a Quote</a>
+      </div>
+    </nav>
+
+    scss/sass code as below
+    
+   $color-primary : #f9ed69; //Yello color
+    $color-secondary: #f08a5d;
+    $color-tertiory : #b4532e;
+    $color-text-dark: #0fafae;
+    $width-button: 50px;
+    $color-text-light: #eee;
+    @mixin clearfix{
+        &::after{
+            content :"";
+            clear: both;
+            display: table;
+        }
+    }
+    
+    @mixin style-link-text($color){
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $color; 
+    }
+    
+    @function divide($a, $b){
+        return $a/$b;
+    }
+    nav{
+        margin: divide(30,4) *1px // 30px;
+        background-color : $color-primary;
+        @include clearfix;
+    }
+
+
+    .navigation{
+        list-style: none;
+         
+        li{
+            display:inline-block;
+            margin-left:30px;
+            &:first-child{ 
+                margin: 0
+            }
+
+            a:link{
+                @include style-link-text($color-text-dark)
+            }
+        }
+    }
+
+    .button{
+        float :right;
+    }
+    
+    %btn-placeholder{
+        padding:10px;
+        display:inline-block;
+        text-align:center;
+        border-radius:100px;
+        width: $width-button;
+        @include style-link-text($color-text-light) 
+    }
+    # // .btn-main:link,
+    # // .btn-hot:link{
+    # //     padding:10px;
+    # //     display:inline-block;
+    # //     text-align:center;
+    # //     border-radius:100px;
+    # //     width: $width-button;
+    # //     @include style-link-text($color-text-light)
+    # // }
+
+    .btn-main{
+        &:link{
+            @extend %btn-placeholder;
+            background-color: $color-secondary;
+        }
+        &:hover{
+            background-color:darken($color-secondary, 15%)
+        }
+    }
+
+    .btn-hot{
+        &:link{
+            @extend %btn-placeholder;
+            background-color: $color-secondary;
+        }
+        &:hover{
+            background-color:lighten($color-secondary, 15%)
+        }
+    }
+
+
+nav {
+  margin: 30px;
+  background-color: #f9ed69;
+}
+nav::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.navigation {
+  list-style: none;
+}
+.navigation li {
+  display: inline-block;
+  margin-left: 30px;
+}
+.navigation li:first-child {
+  margin: 0;
+}
+.navigation li a:link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #0fafae;
+}
+
+.button {
+  float: right;
+}
+
+.btn-main:link,
+.btn-hot:link {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #eee;
+}
+
+.btn-main:link {
+  background-color: #f08a5d;
+}
+.btn-main:hover {
+  background-color: #ea5717;
+}
+
+.btn-hot:link {
+  background-color: #f08a5d;
+}
+.btn-hot:hover {
+  background-color: #f6bda3;
+}
+
+Install Sass Locally:
