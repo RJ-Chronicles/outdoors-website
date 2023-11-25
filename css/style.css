@@ -11,23 +11,27 @@ Dark green: #28b485
 // body taginheritance in css -> font can be get inherited in child component
 //  background-position: top; //bottom, center
 
-* {
+*,
+*::after,
+*::before {
   margin: 0px;
   padding: 0px;
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 html {
-  font-size: 10px;
+  font-size: 62.5%;
 }
-/* one rem is exact root font-size; default is 16px but we set to 10px */
+/*
+16/10 = 62.5% => zoon in page
+one rem is exact root font-size; default is 16px but we set to 10px */
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7;
   color: #777;
   margin: 0px;
+  box-sizing: border-box;
 }
 .header {
   height: 95vh;
@@ -43,17 +47,17 @@ body {
   position: relative;
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 40px;
   left: 40px;
 }
 
-.logo {
+.header__logo {
   height: 35px;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -68,7 +72,7 @@ body {
   margin-bottom: 60px;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
   font-size: 60px;
   font-weight: 400;
@@ -83,7 +87,7 @@ body {
   */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 20px;
   font-weight: 700;
@@ -145,6 +149,7 @@ body {
   border-radius: 100px;
   transition: all 0.2s;
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
@@ -156,7 +161,7 @@ body {
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -176,7 +181,7 @@ body {
   transition: all 0.4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: white;
 }
 
@@ -185,7 +190,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInButtonUp 1s ease-out 0.75s;
   animation-fill-mode: backwords;
 }
