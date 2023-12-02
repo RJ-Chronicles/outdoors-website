@@ -353,3 +353,27 @@ nav::after {
 }
 
 Install Sass Locally:
+
+Fluid layout    
+    To allow webapge to adapt to the current viewport width
+    use %
+    use max-width instead of width
+Responsive units    
+    Use rem uinit instead of px for 
+    to make it easy to scale the entire layout down
+
+Felxible images
+    By default, images dont scale automatically as we change the view port
+    always use % for image dimensions, together with the max-width property
+
+Media query
+    to change css styles on certain viewport widths
+
+   class name start with ^=
+   class name contains *=
+   class name ends with &=
+LAYOUT TYPES:
+Foat layout, flexbox and Grid layout
+
+
+-----------About Section--------
