@@ -377,3 +377,7 @@ Foat layout, flexbox and Grid layout
 
 
 -----------About Section--------
+if the element set as inline-block thenthe 
+parent element will consider the child element
+as text and hence text-align: center will center 
+the child element.
